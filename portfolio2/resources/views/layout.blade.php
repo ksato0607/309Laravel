@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Portfolio 2 Is Started
+                    @yield('content')
                 </div>
 
                 <div class="links">
