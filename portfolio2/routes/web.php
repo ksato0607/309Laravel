@@ -14,8 +14,14 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 //Route::get('/', 'PageController@home');
 //Route::get('about','PageController@about');
+=======
+Route::get('/', function () {
+    return view('welcome');
+});
+>>>>>>> parent of 6e2a20e... Finished tutorial 1-4
 =======
 Route::get('/', function () {
     return view('welcome');
