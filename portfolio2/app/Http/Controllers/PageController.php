@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 class PageController extends Controller
 {
     public function home(){
-      return view('pages.about');
+      return view('googleMap');
     }
 
-    public function about(){
-      return "this is cool";
+    public function sample(){
+      return view('welcome');
     }
 
 
