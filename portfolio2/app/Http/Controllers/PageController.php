@@ -11,6 +11,4 @@ class PageController extends Controller
     public function sample(){
       return view('welcome');
     }
-
-
 }
