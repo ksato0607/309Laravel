@@ -14,5 +14,5 @@
 Route::get('/', 'PageController@home');
 Route::get('sample','PageController@sample');
 
-Route::get('image-upload','ImageController@imageUpload');
-Route::post('image-upload','ImageController@imageUploadPost');
+Route::get('image-upload','PageController@imageUpload');
+Route::post('image-upload','PageController@imageUploadPost');

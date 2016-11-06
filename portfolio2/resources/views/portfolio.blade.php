@@ -53,29 +53,47 @@ async defer></script>
     <br/>
     <h2 style="color:#fff">Share Your Travel Experience</h2>
     <hr class="style-white"/>
-    <div>
-      <form id="contactForm" novalidate="">
+      <div class="container">
+      <div class="panel panel-primary">
+      <div class="panel-body">
+      @if (count($errors) > 0)
+			<div class="alert alert-danger">
+				<strong>Whoops!</strong> There were some problems with your input.<br><br>
+				<ul>
+					@foreach ($errors->all() as $error)
+						<li>{{ $error }}</li>
+					@endforeach
+				</ul>
+			</div>
+		@endif
+
+		@if ($message = Session::get('success'))
+		<div class="alert alert-success alert-block">
+			<button type="button" class="close" data-dismiss="alert">×</button>
+		        <strong>{{ $message }}</strong>
+		</div>
+		<img src="/images/{{ Session::get('path') }}" width="500">
+		@endif
+
+      <form id="contactForm" novalidate="" action="{{ url('image-upload') }}" enctype="multipart/form-data" method="POST">
         <div class="form-item">
           <label for="“name”">Username</label>
           <input id="name" type="text" placeholder="Username" style ="color:#d2d2d2" required/>
         </div>
         <div class="form-item">
-          <label for="“password”">Password</label>
           <input id="password" type="password" placeholder="Password" style ="color:#d2d2d2" required/>
         </div>
         <div class="form-item">
-          <label for="“image”">Image</label>
-          <input id="image" placeholder="Image will be submitted here" style ="color:#d2d2d2" required/>
-        </div>
-        <div class="form-item">
-          <label for="“message”">Your Travel Story</label>
           <textarea id="message" rows="5" placeholder="Your Travel Story" style ="color:#d2d2d2" required/></textarea>
-        </div><br/>
-        <button type="submit">Send</button>
+        </div>
+          <input type="file" name="image" />
+        </br>
+        <button type="submit" class="btn btn-success">Share</button>
       </form>
-      <div id="form_text">
-      </div>
+      <div id="form_text"></div>
     </div>
+  </div>
+</div>
   </br>
   </section>
 @stop
