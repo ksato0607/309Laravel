@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Http\Requests;
 
 class PageController extends Controller
 {
@@ -18,7 +20,7 @@ class PageController extends Controller
 
     public function imageUpload()
     {
-    	return view('portfolio');
+    	return view('image-upload');
     }
 
     /**

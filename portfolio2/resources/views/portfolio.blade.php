@@ -72,10 +72,10 @@ async defer></script>
 			<button type="button" class="close" data-dismiss="alert">×</button>
 		        <strong>{{ $message }}</strong>
 		</div>
-		<img src="/images/{{ Session::get('path') }}" width="500">
 		@endif
 
-      <form id="contactForm" novalidate="" action="{{ url('image-upload') }}" enctype="multipart/form-data" method="POST">
+      <form id="contactForm" novalidate="" action="{{ url('/#contact') }}" enctype="multipart/form-data" method="POST">
+        {{ csrf_field() }}
         <div class="form-item">
           <label for="“name”">Username</label>
           <input id="name" type="text" placeholder="Username" style ="color:#d2d2d2" required/>
@@ -110,7 +110,7 @@ async defer></script>
       <h3>Around the Web</h3>
       <div class="social"><ul>
         <li><a target="_blank" href="https://www.linkedin.com/in/keisuke-sato-15a601a0?trk=nav_responsive_tab_profile_pic" class="button social"><i class="fa fa-fw fa-linkedin"></i></a></li>
-        <li><a target="_blank" href="https://github.com/ksato0607" class="button social"><i class="fa fa-fw fa-github"></i></a></li>
+        <li><a target="_blank" href="https://github.com/ksato0607/309Laravel" class="button social"><i class="fa fa-fw fa-github"></i></a></li>
         <li><a target="_blank" href="https://twitter.com/trip_go_trip" class="button social"><i class="fa fa-fw fa-twitter"></i></a></li>
       </ul>
           </div>
