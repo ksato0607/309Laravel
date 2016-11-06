@@ -10,13 +10,10 @@
 
 <!-- Adding Map -->
 @section('map')
-
-<style>
-#map {
-  height:90%;
-  width: 100%;
-}
-</style>
+<div id="floating-panel">
+  <input id="address" type="textbox" value="">
+  <input id="submit" type="button" value="Geocode">
+</div>
 <div id="map"></div>
 <script>
 function initMap() {
@@ -25,11 +22,25 @@ function initMap() {
     zoom: 2,
     scrollwheel: false
   });
+  var geocoder = new google.maps.Geocoder();
 
-  var marker = new google.maps.Marker({
-    position: {lat: 42.0308, lng: -93.6319},
-    map: map,
-    title: 'I visited!'
+  document.getElementById('submit').addEventListener('click', function() {
+    geocodeAddress(geocoder, map);
+  });
+}
+
+function geocodeAddress(geocoder, resultsMap) {
+  var address = document.getElementById('address').value;
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === 'OK') {
+      var marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location,
+        title: address
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
   });
 }
 </script>
