@@ -16,3 +16,5 @@ Route::get('sample','PageController@sample');
 
 Route::get('image-upload','ImageController@imageUpload');
 Route::post('image-upload','ImageController@imageUploadPost');
+
+Route::get('databaseTest','DatabaseController@index');
