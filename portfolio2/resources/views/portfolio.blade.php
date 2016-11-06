@@ -28,7 +28,6 @@ function initMap() {
     geocodeAddress(geocoder, map);
   });
 }
-
 function geocodeAddress(geocoder, resultsMap) {
   var address = document.getElementById('address').value;
   geocoder.geocode({'address': address}, function(results, status) {
