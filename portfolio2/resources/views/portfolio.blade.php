@@ -41,10 +41,9 @@ async defer></script>
 <section id="portfolio">
   <h2>New Location</h2>
   <ul class="grid">
-    <li><img src="https://firebasestorage.googleapis.com/v0/b/laravel-659e1.appspot.com/o/S__4980738.jpg?alt=media&token=c89b32df-0618-4eef-95a6-e86f1b70b72e" alt="India"/> <font color="#666"> Train in Mumbai, India </font></li>
-    <li><img src="https://firebasestorage.googleapis.com/v0/b/laravel-659e1.appspot.com/o/S__4980739.jpg?alt=media&token=2f01ebe9-10a5-4265-b1fd-0223dbb8825a" alt="Cambodia"/><font color="#666">Mini-water fall in Kirirom, Cambodia</font></li>
-    <li><img src="https://firebasestorage.googleapis.com/v0/b/laravel-659e1.appspot.com/o/S__4980740.jpg?alt=media&token=839b4cea-bfbc-474c-ab07-94cd98a8411f" alt="Jamaica"/><font color="#666">Children in Jamaica are working on building their school!</font></li>
-    <li><img src="https://firebasestorage.googleapis.com/v0/b/laravel-659e1.appspot.com/o/11705220_848432988537596_5774991432967592257_n.jpg?alt=media&token=db889c96-56d9-487b-a075-ac9ad6bc9049" alt="Singapore"/><font color="#666"> Merlion in Singapore! It is smaller than I thought!</font></li>
+    <?php foreach ($database as $data): ?>
+      <li><img src="{{ $data->imageUrl }}"><font color="#666"> {{$data->imageStory}} </font></li>
+    <?php endforeach; ?>
   </ul>
 </section>
 @stop

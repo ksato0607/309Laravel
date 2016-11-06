@@ -15,8 +15,6 @@ class DatabaseController extends Controller
     public function index()
     {
         $databaseTest = DB::table('tblImages')->select('imageUrl')->get();
-        //$people = ['1','2','3'];
-        //return view('databaseTest', ['tblImages' => $databases]);
-        return view('databaseTest',['database' => $databaseTest]);
+        return view('portfolio',['database' => $databaseTest]);
     }
 }
