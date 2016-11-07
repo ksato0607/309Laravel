@@ -12,7 +12,9 @@
 */
 
 Route::get('/', 'PageController@home');
-Route::get('sample','PageController@sample');
 
 //Route::get('image-upload','PageController@imageUpload');
 Route::post('/','PageController@imageUploadPost');
+
+Route::get('firebaseTest','PageController@test');
+//Route::post('/','PageController@databasePost');

@@ -48,6 +48,9 @@
       <!-- end header-->
       <a id="top" name="home"></a>
 
+      <!-- Firebase Info -->
+      @yield('firebase')
+
       <!-- Google Map Section -->
       @yield('map')
 

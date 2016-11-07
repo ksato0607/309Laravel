@@ -14,13 +14,20 @@ class PageController extends Controller
       return view('portfolio',['database' => $databaseResult]);
     }
 
-    public function sample(){
-      return view('welcome');
+    public function databasePost(Request $request)
+    {
+      // DB::table('tblImages')->insert(['imageLocation' => 'test']);
+      // $databaseResult = DB::table('tblImages')->get();
+      return view('portfolio',['database' => $databaseResult]);
     }
 
     public function imageUpload()
     {
     	return view('image-upload');
+    }
+
+    public function test(){
+      return view('firebaseTest');
     }
 
     /**
@@ -35,10 +42,19 @@ class PageController extends Controller
         ]);
 
         $imageName = time().'.'.$request->image->getClientOriginalExtension();
-        $request->image->move(public_path('images'), $imageName);
+        //$request->image->move(public_path('images'), $imageName);
+
+        // "<script>
+        // var storageRef = firebase.storage().ref('test2/' + $imageName);
+        // storageRef.put($request->image);
+        // storageRef.getDownloadURL().then(function(url) {
+        //   var imageUrl = url;
+        //   console.log(imageUrl);
+        //   });
+        // </script>";
 
     	return back()
-    		->with('success','Image Uploaded successfully.')
-    		->with('path',$imageName);
+    		->with('success','Image Uploaded successfully.');
+    		//->with('path',$imageName);
     }
 }
