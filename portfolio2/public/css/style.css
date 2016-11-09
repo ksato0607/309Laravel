@@ -287,3 +287,7 @@ hr.star-dark:after{color:#888;background-color:#eee;
     line-height: 20px;
     padding-left: 10px;
   }
+
+  #validationSuccess, #validationFail{
+    display: none;
+  }
