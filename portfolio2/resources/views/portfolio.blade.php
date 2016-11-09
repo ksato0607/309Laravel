@@ -9,23 +9,23 @@
 
 <!-- Adding Map -->
 @section('map')
-<div id="floating-panel">
-  100 Travellers
-</div>
+<div id="floating-panel"></div>
 <div id="map"></div>
 <script>
-var map;
-var geocoder;
+
 function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
+  var map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 40.4168, lng: -3.7038},
     zoom: 2,
     scrollwheel: false
   });
-  geocoder = new google.maps.Geocoder();
-
-  geocodeAddress(geocoder, map, "Ames");
-  geocodeAddress(geocoder, map, "Mumbai");
+  var geocoder = new google.maps.Geocoder();
+  var countTravellers = 0;
+  @foreach ($database as $data)
+    geocodeAddress(geocoder, map, "{{$data->imageLocation}}");
+    countTravellers++;
+  @endforeach
+  document.getElementById("floating-panel").innerHTML = countTravellers + " Travellers! ";
 }
 
  function geocodeAddress(geocoder, resultsMap, address) {
@@ -41,12 +41,14 @@ function initMap() {
     }
   });
 }
+
+
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoCNaVtm5v0u6cQ5FOxBBhkSIQ0LiZJXc&callback=initMap"
 async defer></script>
-<!-- @foreach ($database as $data)
-  <script> geocodeAddress(geocoder, map, "{{$data->imageLocation}}"); </script>
-@endforeach -->
+<script type="text/javascript">
+
+</script>
 @stop
 
 @section('new')
@@ -88,6 +90,9 @@ async defer></script>
           <input id="password" type="password" placeholder="Password" style ="color:#d2d2d2" required/>
         </div>
         <div class="form-item">
+          <input id="location" rows="5" placeholder="Location" style ="color:#d2d2d2" required/></input>
+        </div>
+        <div class="form-item">
           <textarea id="message" rows="5" placeholder="Your Travel Story" style ="color:#d2d2d2" required/></textarea>
         </div>
         <input type="file" value="upload" id="fileButton"/></br>
@@ -127,11 +132,11 @@ async defer></script>
       var file = e.target.files[0];
       var storageRef = firebase.storage().ref(file.name);
       var message = document.getElementById('message').value;
+      var imageLocation = document.getElementById('location').value;
       storageRef.put(file);
       storageRef.getDownloadURL().then(function(url) {
         var imageUrl = url;
-        alert(message);
-        $.get("/test?url=" + imageUrl + '&message='+message);
+        $.get("/test?url=" + imageUrl + '&message='+message + '&location=' + imageLocation);
         localStorage.setItem("validationSuccess", "TRUE");
         location.reload(); //To update database on our web
       });
