@@ -258,7 +258,7 @@ hr.star-dark:after{color:#888;background-color:#eee;
 }
 
   #contactForm,#form_text{
-    width: 50%;
+    width: 90%;
     float:left;
     display:block;
     box-sizing: border-box;
@@ -268,10 +268,48 @@ hr.star-dark:after{color:#888;background-color:#eee;
     padding: 0px 25px;
   }
 
+  #topImage{
+    max-height: 100%;
+    max-width: 100%;
+  }
+
+  @media(max-width:768px){
+    #topImage{
+      height: 50%;
+      width: 100%;
+    }
+  }
 /*Map style*/
   #map {
     height:90%;
     width: 100%;
+  }
+
+  @media(max-width:768px){
+    #map {
+      height:50%;
+      width: 100%;
+    }
+  }
+
+  .modal {
+  	position: fixed;
+  	z-index: 5;
+  	padding-top: 70px;
+  	left: 0;
+  	top: 0;
+  	width: 100%;
+  	height: 100%;
+  	overflow: auto;
+  	background-color: rgb(0,0,0);
+  	background-color: rgba(0,0,0,0.6);
+  }
+  .modal-content {
+  	background-color: #fefefe;
+  	margin: auto;
+  	padding: 20px;
+  	border: 1px solid #888;
+  	width: 70%;
   }
 
   #floating-panel {

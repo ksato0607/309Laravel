@@ -7,34 +7,61 @@
 <!-- end header-->
 @stop
 
+<!-- Adding Top Image-->
+@section('topImage')
+<!-- <img id="topImage" src="https://firebasestorage.googleapis.com/v0/b/laravel-659e1.appspot.com/o/pexels-photo-109917.jpeg?alt=media&token=66bdd20e-7ed5-4341-af16-b5da5119f7d6"/> -->
+@stop
+
 <!-- Adding Map -->
 @section('map')
 <div id="floating-panel"></div>
 <div id="map"></div>
+<div id = "myModal" class = "modal">
+<div class = "modal-content">
+	<strong><p id = "disp" style = "color: #9E9E9E"></p></strong>
+</div>
+</div>
 <script>
-
+var map;
 function initMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 40.4168, lng: -3.7038},
+  if ($(window).width() <= 768){
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 40.4168, lng: 5.7038},
+    zoom: 1,
+    scrollwheel: false
+  });
+} else {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 40.4168, lng: 5.7038},
     zoom: 2,
     scrollwheel: false
   });
+}
   var geocoder = new google.maps.Geocoder();
-  var countTravellers = 0;
+  var totalTravellers = 0;
   @foreach ($database as $data)
-    geocodeAddress(geocoder, map, "{{$data->imageLocation}}");
-    countTravellers++;
+    geocodeAddress(geocoder, map, "{{$data->imageLocation}}", "{{$data->imageUrl}}", "{{$data->imageStory}}");
+    totalTravellers++;
   @endforeach
-  document.getElementById("floating-panel").innerHTML = countTravellers + " Travellers! ";
+  document.getElementById("floating-panel").innerHTML = totalTravellers + " Travellers Visited ";
+
+  google.maps.event.addDomListener(window, "resize", function() {
+   var center = map.getCenter();
+   google.maps.event.trigger(map, "resize");
+   map.setCenter(center);
+});
 }
 
- function geocodeAddress(geocoder, resultsMap, address) {
+ function geocodeAddress(geocoder, resultsMap, address, url,story) {
   geocoder.geocode({'address': address}, function(results, status) {
     if (status === 'OK') {
       var marker = new google.maps.Marker({
         map: resultsMap,
         position: results[0].geometry.location,
-        title: address
+      });
+      attachLocation(marker, url, address);
+      marker.addListener('click', function() {
+            popupImage(url,story);
       });
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
@@ -42,6 +69,35 @@ function initMap() {
   });
 }
 
+function attachLocation(marker, url, address) {
+  var infowindow = new google.maps.InfoWindow({
+    content: "<img src=" + url + " width=150px> " + "<br/>"+ address
+    //disableAutoPan: true
+  });
+
+  marker.addListener('mouseover', function() {
+    infowindow.open(marker.get('map'), marker);
+  });
+
+  marker.addListener('mouseout', function() {
+    infowindow.close(marker.get('map'), marker);
+  });
+}
+
+var modal = document.getElementById("myModal");
+function popupImage(url,story){
+    modal.style.display = "block";
+    document.getElementById("disp").innerHTML = "<center> <img src=" + url + " width=80%><br/><br/>"
+    + story + "</center>";
+}
+
+window.onclick = function(event)
+{
+	if(event.target == modal)
+	{
+		modal.style.display = "none";
+	}
+}
 
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoCNaVtm5v0u6cQ5FOxBBhkSIQ0LiZJXc&callback=initMap"
