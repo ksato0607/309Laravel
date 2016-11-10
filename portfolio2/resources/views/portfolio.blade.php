@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('header')
-<li><a href="#top" class="scrollable">Map</a></li>
+<li><a href="#map" class="scrollable">Map</a></li>
 <li><a href="#portfolio" class="scrollable">New</a></li>
 <li><a href="#contact" class="scrollable">Share</a></li>
 <!-- end header-->
@@ -9,7 +9,9 @@
 
 <!-- Adding Top Image-->
 @section('topImage')
-<!-- <img id="topImage" src="https://firebasestorage.googleapis.com/v0/b/laravel-659e1.appspot.com/o/pexels-photo-109917.jpeg?alt=media&token=66bdd20e-7ed5-4341-af16-b5da5119f7d6"/> -->
+<img id="topImage" src="https://firebasestorage.googleapis.com/v0/b/laravel-659e1.appspot.com/o/pexels-photo-109917.jpeg?alt=media&token=66bdd20e-7ed5-4341-af16-b5da5119f7d6"/>
+<p id="quote">If you can go anywhere, where would you like to go?</>
+<a id="startJourney" href="#map" class="scrollable">Start your journey here</a>
 @stop
 
 <!-- Adding Map -->
@@ -109,10 +111,11 @@ async defer></script>
 
 @section('new')
 <section id="portfolio">
+	<br/>
   <h2>New Location</h2>
   <ul class="grid">
     @foreach ($database as $data)
-      <li><img src="{{ $data->imageUrl }}" alt="image not available"><font color="#666"> {{$data->imageStory}} </font></li>
+      <li><img src="{{ $data->imageUrl }}" alt="image not available"><font color="#666"> {{$data->imageStory}} </br>-{{$data->imageLocation}} </font></li>
   @endforeach
   </ul>
 </section>
@@ -153,11 +156,14 @@ async defer></script>
         </div>
         <input type="file" value="upload" id="fileButton"/></br>
         </br>
-        <input type="button" value="Share" id="shareButton"/></br>
+        <input type="button" value="Share!" id="shareButton"/></br>
       </br>
-        <img id="imageTest" width="200">
       </form>
-      <div id="form_text"></div>
+			<div id="form_text">
+				<!-- <p style ="color:rgba(255, 152, 0, 0.73)">
+					<strong> Do you like travelling? </br> Do you have some cool pictures? </br> Share your story to the world! </strong>
+				</p> -->
+			</div>
     </div>
   </div>
 </div>
@@ -234,8 +240,8 @@ async defer></script>
 <footer>
   <div id="footer-above">
     <div>
-      <h3>About this page</h3>
-      <p style="color:#1e1e1e"> Made by Brad Stiff & Keisuke Sato</p>
+      <h3>Travellers</h3>
+			<img id="travellers" src="https://firebasestorage.googleapis.com/v0/b/laravel-659e1.appspot.com/o/10525892_690031424377754_5873567534962833692_n.jpg?alt=media&token=4567c703-7ca5-402d-a714-9db71049ec61"></img>
     </div>
     <div>
       <h3>Around the Web</h3>

@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/style.css">
 
-        <title>Laravel</title>
+        <title>TripTrip</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -35,8 +35,9 @@
         </style>
     </head>
     <body>
+      <script src="js/index.js"></script>
       <header id="banner" class="navbar navbar-default navbar-fixed-top">
-        <div class="container"><img src="https://s31.postimg.org/67g2pvv7f/Screen_Shot_2016_06_26_at_3_46_05_PM.png" alt="trip logo" title="trip logo"/></a>
+        <div class="container"><a href="#top" class="scrollable"><img src="https://s31.postimg.org/67g2pvv7f/Screen_Shot_2016_06_26_at_3_46_05_PM.png" alt="trip logo" title="trip logo"/></a>
           <button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
           <nav id="navbar" role="navigation" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">

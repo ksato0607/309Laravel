@@ -259,7 +259,7 @@ hr.star-dark:after{color:#888;background-color:#eee;
 
   #contactForm,#form_text{
     width: 90%;
-    float:left;
+    float:center;
     display:block;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -269,7 +269,7 @@ hr.star-dark:after{color:#888;background-color:#eee;
   }
 
   #topImage{
-    max-height: 100%;
+    height: auto;
     max-width: 100%;
   }
 
@@ -283,6 +283,7 @@ hr.star-dark:after{color:#888;background-color:#eee;
   #map {
     height:90%;
     width: 100%;
+    margin-top: 15px;
   }
 
   @media(max-width:768px){
@@ -314,7 +315,7 @@ hr.star-dark:after{color:#888;background-color:#eee;
 
   #floating-panel {
     position: absolute;
-    top: 100px;
+    top: 120%;
     right: 5%;
     z-index: 5;
     background-color: #fff;
@@ -326,6 +327,64 @@ hr.star-dark:after{color:#888;background-color:#eee;
     padding-left: 10px;
   }
 
+  @media(max-width:768px){
+  #floating-panel {
+    position: absolute;
+    top: 65%;
+    right: 5%;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+    text-align: center;
+    font-family: 'Roboto','sans-serif';
+    line-height: 20px;
+    padding-left: 10px;
+  }}
+
+  #quote {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    z-index: 5;
+    font-size: 70px;
+  }
+
+  #startJourney{
+    position: absolute;
+    top: 500px;
+    right: 0%;
+    z-index: 5;
+    font-size: 30px;
+    color: #fff;
+  }
+
+  @media(max-width:768px){
+    #startJourney{
+      position: absolute;
+      top: 250px;
+      right: 0%;
+      z-index: 5;
+      font-size: 18px;
+      color: #fff;
+    }
+  }
+
+  @media(max-width:768px){
+  #quote {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    z-index: 5;
+    font-size: 30px;
+  }}
+
   #validationSuccess, #validationFail{
     display: none;
+  }
+
+  #travellers{
+    border-radius: 50%;
+    width: 40px;
+    height: auto;
   }
